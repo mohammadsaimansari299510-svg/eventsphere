@@ -17,10 +17,8 @@ nixPkgs = [
 [phases.build]
 cmds = [
     "composer install --no-dev --optimize-autoloader --no-interaction",
-    "php artisan config:clear",
-    "php artisan route:clear",
-    "php artisan view:clear"
+    "php artisan package:discover --ansi"
 ]
 
 [start]
-cmd = "php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
+cmd = "php artisan config:clear && php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
