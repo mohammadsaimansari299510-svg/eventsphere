@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EventSphere - Management Portal">
-    <title>@yield('title', 'EventSphere Management Portal')</title>
+    <meta name="description" content="EVENTSPHERE - Management Portal">
+    <title>@yield('title', 'EVENTSPHERE Management Portal')</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,18 +18,18 @@
 <div class="portal-layout">
 
     <!-- ================================================
-         SIDEBAR
+         SIDEBAR (DARK THEME)
          ================================================ -->
     <aside class="portal-sidebar" id="portalSidebar">
 
         <!-- Sidebar Header / Brand -->
         <div class="sidebar-header">
-            <a href="{{ route('home') }}" class="sidebar-brand" style="text-decoration:none;">
+            <a href="{{ route('home') }}" class="sidebar-brand">
                 <div class="logo-icon">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
                 <div>
-                    <div class="sidebar-brand-name">EventSphere</div>
+                    <div class="sidebar-brand-name">EVENTSPHERE</div>
                 </div>
             </a>
             <div class="sidebar-role-tag" style="margin-top:0.35rem; padding-left:0.35rem;">
@@ -44,7 +44,7 @@
             </div>
             <div class="sidebar-user-info">
                 <div class="sidebar-user-name">{{ Auth::user()->name }}</div>
-                <span class="role-pill role-{{ Auth::user()->role }}" style="font-size:0.62rem;">
+                <span class="role-pill role-{{ Auth::user()->role }}" style="font-size:0.65rem;">
                     {{ Auth::user()->role }}
                 </span>
             </div>
@@ -60,14 +60,14 @@
                     <li>
                         <a href="{{ route('admin.dashboard') }}"
                            class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                            <i class="fa-solid fa-chart-pie" style="color:#818CF8;"></i>
+                            <i class="fa-solid fa-chart-pie" style="color:#60A5FA;"></i>
                             Dashboard
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.events.pending') }}"
                            class="sidebar-link {{ request()->routeIs('admin.events.pending') ? 'active' : '' }}">
-                            <i class="fa-solid fa-clock" style="color:#FCD34D;"></i>
+                            <i class="fa-solid fa-clock" style="color:#FBBF24;"></i>
                             Pending Proposals
                         </a>
                     </li>
@@ -90,13 +90,13 @@
 
                     <li>
                         <a href="{{ route('admin.reports.export', 'participation') }}" class="sidebar-link">
-                            <i class="fa-solid fa-file-csv" style="color:#4ADE80;"></i>
+                            <i class="fa-solid fa-file-csv" style="color:#34D399;"></i>
                             Export Registrations
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.reports.export', 'feedback') }}" class="sidebar-link">
-                            <i class="fa-solid fa-file-csv" style="color:#FCD34D;"></i>
+                            <i class="fa-solid fa-file-csv" style="color:#FBBF24;"></i>
                             Export Feedback
                         </a>
                     </li>
@@ -113,14 +113,14 @@
                     <li>
                         <a href="{{ route('organizer.dashboard') }}"
                            class="sidebar-link {{ request()->routeIs('organizer.dashboard') ? 'active' : '' }}">
-                            <i class="fa-solid fa-gauge-high" style="color:#818CF8;"></i>
+                            <i class="fa-solid fa-gauge-high" style="color:#60A5FA;"></i>
                             Dashboard
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('organizer.events.create') }}"
                            class="sidebar-link {{ request()->routeIs('organizer.events.create') ? 'active' : '' }}">
-                            <i class="fa-solid fa-plus-circle" style="color:#4ADE80;"></i>
+                            <i class="fa-solid fa-plus-circle" style="color:#34D399;"></i>
                             Create Event
                         </a>
                     </li>
@@ -153,7 +153,7 @@
         <div class="sidebar-footer">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-outline btn-sm w-full" style="justify-content:center; font-size:0.82rem;">
+                <button type="submit" class="btn btn-outline btn-sm w-full" style="justify-content:center;">
                     <i class="fa-solid fa-right-from-bracket"></i> Sign Out
                 </button>
             </form>
@@ -170,11 +170,11 @@
 
         <!-- Mobile Header (visible < 1024px) -->
         <div class="portal-mobile-header">
-            <a href="{{ route('home') }}" class="brand-logo" style="font-size:1.2rem;">
-                <div class="logo-icon" style="width:28px; height:28px; font-size:0.8rem;">
+            <a href="{{ route('home') }}" class="brand-logo" style="font-size:1.15rem;">
+                <div class="logo-icon" style="width:30px; height:30px; font-size:0.85rem;">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-                <span>EventSphere</span>
+                <span>EVENTSPHERE</span>
             </a>
 
             <button class="sidebar-mobile-toggle" id="sidebarToggle" aria-label="Open menu">
