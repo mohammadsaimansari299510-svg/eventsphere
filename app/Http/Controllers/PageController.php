@@ -12,43 +12,55 @@ class PageController extends Controller
 {
     public function home()
     {
-        $upcomingEvents = Event::with(['category', 'organizer'])
-            ->where('status', 'approved')
-            ->where('start_date', '>=', now())
-            ->orderBy('start_date', 'asc')
-            ->take(6)
-            ->get();
+        try {
+            $upcomingEvents = Event::with(['category', 'organizer'])
+                ->where('status', 'approved')
+                ->where('start_date', '>=', now())
+                ->orderBy('start_date', 'asc')
+                ->take(6)
+                ->get();
 
-        $ongoingEvents = Event::with(['category', 'organizer'])
-            ->where('status', 'approved')
-            ->where('start_date', '<=', now())
-            ->where('end_date', '>=', now())
-            ->orderBy('start_date', 'asc')
-            ->get();
+            $ongoingEvents = Event::with(['category', 'organizer'])
+                ->where('status', 'approved')
+                ->where('start_date', '<=', now())
+                ->where('end_date', '>=', now())
+                ->orderBy('start_date', 'asc')
+                ->get();
 
-        $pastEvents = Event::with(['category', 'organizer'])
-            ->where('status', 'approved')
-            ->where('end_date', '<', now())
-            ->orderBy('end_date', 'desc')
-            ->take(4)
-            ->get();
+            $pastEvents = Event::with(['category', 'organizer'])
+                ->where('status', 'approved')
+                ->where('end_date', '<', now())
+                ->orderBy('end_date', 'desc')
+                ->take(4)
+                ->get();
 
-        $announcements = Announcement::where('target_role', 'all')
-            ->orderBy('created_at', 'desc')
-            ->take(5)
-            ->get();
+            $announcements = Announcement::where('target_role', 'all')
+                ->orderBy('created_at', 'desc')
+                ->take(5)
+                ->get();
 
-        $categories = Category::withCount(['events' => function ($q) {
-            $q->where('status', 'approved');
-        }])->get();
+            $categories = Category::withCount(['events' => function ($q) {
+                $q->where('status', 'approved');
+            }])->get();
 
-        $featuredGallery = MediaGallery::orderBy('created_at', 'desc')->take(6)->get();
+            $featuredGallery = MediaGallery::orderBy('created_at', 'desc')->take(6)->get();
 
-        // Stats for homepage counters (real DB values)
-        $totalEvents       = Event::where('status', 'approved')->count();
-        $totalStudents     = \App\Models\User::where('role', 'student')->count();
-        $totalOrganizers   = \App\Models\User::where('role', 'organizer')->count();
-        $totalCertificates = \App\Models\Certificate::count();
+            $totalEvents       = Event::where('status', 'approved')->count();
+            $totalStudents     = \App\Models\User::where('role', 'student')->count();
+            $totalOrganizers   = \App\Models\User::where('role', 'organizer')->count();
+            $totalCertificates = \App\Models\Certificate::count();
+        } catch (\Throwable $e) {
+            $upcomingEvents = collect();
+            $ongoingEvents = collect();
+            $pastEvents = collect();
+            $announcements = collect();
+            $categories = collect();
+            $featuredGallery = collect();
+            $totalEvents = 0;
+            $totalStudents = 0;
+            $totalOrganizers = 0;
+            $totalCertificates = 0;
+        }
 
         return view('home', compact(
             'upcomingEvents', 'ongoingEvents', 'pastEvents',
