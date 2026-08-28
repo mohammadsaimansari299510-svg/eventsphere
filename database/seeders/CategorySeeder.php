@@ -14,12 +14,12 @@ class CategorySeeder extends Seeder
             [
                 'name' => 'Cultural Events',
                 'description' => 'Dance, music, drama, fashion shows, and artistic performance competitions.',
-                'icon' => 'palette'
+                'icon' => 'masks-theater'
             ],
             [
                 'name' => 'Technical Fests',
                 'description' => 'Hackathons, coding challenges, robotics competitions, and tech symposiums.',
-                'icon' => 'code'
+                'icon' => 'laptop-code'
             ],
             [
                 'name' => 'Sports Meets',
@@ -29,17 +29,17 @@ class CategorySeeder extends Seeder
             [
                 'name' => 'Annual Day Functions',
                 'description' => 'College anniversary, prize distribution, and annual celebration functions.',
-                'icon' => 'star'
+                'icon' => 'graduation-cap'
             ],
             [
                 'name' => 'Workshops & Seminars',
                 'description' => 'Academic lectures, industry expert talks, skill-building workshops, and webinars.',
-                'icon' => 'book'
+                'icon' => 'chalkboard-user'
             ],
             [
                 'name' => 'Intercollegiate Competitions',
                 'description' => 'Multi-college tournaments, debates, quizzes, and inter-university fests.',
-                'icon' => 'users'
+                'icon' => 'people-group'
             ],
         ];
 

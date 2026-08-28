@@ -225,7 +225,7 @@
         @foreach($categories as $category)
         <a href="{{ route('events.index') }}?category={{ $category->id }}" class="category-card">
             <div class="category-icon-wrapper">
-                <i class="fa-solid fa-{{ $category->slug == 'technical' ? 'code' : ($category->slug == 'cultural' ? 'masks-theater' : ($category->slug == 'sports' ? 'trophy' : ($category->slug == 'workshops' ? 'laptop-code' : 'certificate'))) }}"></i>
+                <i class="fa-solid fa-{{ $category->icon_class ?? 'calendar-check' }}"></i>
             </div>
             <h4 class="category-name">{{ $category->name }}</h4>
             <span class="category-count">{{ $category->events_count ?? 0 }} Live Events</span>
