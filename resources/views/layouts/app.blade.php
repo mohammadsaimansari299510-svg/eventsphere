@@ -200,7 +200,7 @@
 
         <!-- Flash Messages -->
         @if(session('success'))
-            <div style="max-width: 1320px; margin: 1.5rem auto 0; padding: 0 1.5rem;">
+            <div style="margin: 1.5rem 2rem 0; padding: 0;">
                 <div class="alert alert-success alert-auto-dismiss">
                     <span><i class="fa-solid fa-circle-check"></i> {{ session('success') }}</span>
                     <button class="alert-close"><i class="fa-solid fa-xmark"></i></button>
@@ -209,7 +209,7 @@
         @endif
 
         @if(session('error'))
-            <div style="max-width: 1320px; margin: 1.5rem auto 0; padding: 0 1.5rem;">
+            <div style="margin: 1.5rem 2rem 0; padding: 0;">
                 <div class="alert alert-error alert-auto-dismiss">
                     <span><i class="fa-solid fa-triangle-exclamation"></i> {{ session('error') }}</span>
                     <button class="alert-close"><i class="fa-solid fa-xmark"></i></button>
@@ -218,7 +218,7 @@
         @endif
 
         @if(session('warning'))
-            <div style="max-width: 1320px; margin: 1.5rem auto 0; padding: 0 1.5rem;">
+            <div style="margin: 1.5rem 2rem 0; padding: 0;">
                 <div class="alert alert-warning alert-auto-dismiss">
                     <span><i class="fa-solid fa-circle-exclamation"></i> {{ session('warning') }}</span>
                     <button class="alert-close"><i class="fa-solid fa-xmark"></i></button>
@@ -227,7 +227,7 @@
         @endif
 
         @if(session('info'))
-            <div style="max-width: 1320px; margin: 1.5rem auto 0; padding: 0 1.5rem;">
+            <div style="margin: 1.5rem 2rem 0; padding: 0;">
                 <div class="alert alert-info alert-auto-dismiss">
                     <span><i class="fa-solid fa-circle-info"></i> {{ session('info') }}</span>
                     <button class="alert-close"><i class="fa-solid fa-xmark"></i></button>

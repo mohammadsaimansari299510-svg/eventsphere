@@ -39,175 +39,223 @@ class EventSeeder extends Seeder
         $annualCat = $categories->get('Annual Day Functions') ?? Category::first();
         $interCat = $categories->get('Intercollegiate Competitions') ?? Category::first();
 
-        // 1. Upcoming Tech Hackathon Event (Approved)
-        $hackathon = Event::updateOrCreate(
-            ['slug' => 'hacknova-2026-inter-college-hackathon'],
+        // 1. CodeCraft Hackathon (Technical Fests)
+        $codecraft = Event::updateOrCreate(
+            ['slug' => 'codecraft-hackathon'],
             [
-                'title' => 'HackNova 2026: 36-Hour National Hackathon',
-                'description' => 'Unleash your creativity and engineering prowess at HackNova 2026! Over 36 exhilarating hours, build groundbreaking solutions in AI, Decentralized Systems, Climate Tech, and HealthTech. Mentorship from top industry engineers, hardware lab access, cloud credits, and exciting cash prizes up to $10,000.',
+                'title' => 'CodeCraft Hackathon',
+                'description' => 'A premier 36-hour inter-college coding marathon where student developers collaborate to build high-impact web, mobile, and AI applications. Features mentorship from industry leaders, lightning tech talks, and prize pool with internship opportunities.',
                 'category_id' => $techCat->id,
-                'venue' => 'Main Auditorium & Turing Innovation Lab, Block 4',
+                'venue' => 'Innovation Hub & Turing Lab, Block A',
                 'capacity' => 150,
-                'available_slots' => 142,
+                'available_slots' => 140,
                 'start_date' => Carbon::now()->addDays(12)->setTime(9, 0),
                 'end_date' => Carbon::now()->addDays(14)->setTime(18, 0),
                 'registration_deadline' => Carbon::now()->addDays(10)->setTime(23, 59),
                 'organizer_id' => $organizer->id,
                 'organizing_department' => 'Computer Science & Engineering',
                 'status' => 'approved',
-                'hashtags' => '#HackNova2026 #Hackathon #CampusInnovate #DevCommunity',
+                'banner_image' => 'images/events/codecraft.jpg',
+                'hashtags' => '#CodeCraft #Hackathon #CampusDev #TechFest',
             ]
         );
 
-        // 2. Cultural Fest (Approved, Upcoming)
-        $symphony = Event::updateOrCreate(
-            ['slug' => 'symphonia-2026-annual-cultural-carnival'],
+        // 2. Pulse Music & Dance Fest (Cultural Events)
+        $pulseFest = Event::updateOrCreate(
+            ['slug' => 'pulse-music-and-dance-fest'],
             [
-                'title' => 'Symphonia 2026: Annual Cultural Carnival',
-                'description' => 'The biggest cultural extravaganza of the year! Experience electric musical performances, battle of the bands, classical fusion dance, theatrical drama showcases, street play contests, and vibrant food stalls curated by campus clubs.',
+                'title' => 'Pulse Music & Dance Fest',
+                'description' => 'The ultimate campus cultural festival celebrating music, dance, fashion, and theatrical arts. Enjoy live stage band battles, dynamic street dance battles, fusion choreography, and delicious campus food trucks.',
                 'category_id' => $cultCat->id,
-                'venue' => 'Open Air Amphitheatre & Central Lawn',
+                'venue' => 'Central Amphitheatre & Open Lawn',
                 'capacity' => 500,
-                'available_slots' => 380,
-                'start_date' => Carbon::now()->addDays(20)->setTime(16, 0),
-                'end_date' => Carbon::now()->addDays(22)->setTime(22, 0),
-                'registration_deadline' => Carbon::now()->addDays(18)->setTime(23, 59),
+                'available_slots' => 320,
+                'start_date' => Carbon::now()->addDays(18)->setTime(17, 0),
+                'end_date' => Carbon::now()->addDays(20)->setTime(22, 30),
+                'registration_deadline' => Carbon::now()->addDays(16)->setTime(23, 59),
                 'organizer_id' => $organizer->id,
-                'organizing_department' => 'Student Affairs & Cultural Council',
+                'organizing_department' => 'Cultural Affairs & Student Council',
                 'status' => 'approved',
-                'hashtags' => '#Symphonia2026 #CulturalCarnival #CampusVibes #MusicFest',
+                'banner_image' => 'images/events/pulse-fest.jpg',
+                'hashtags' => '#PulseFest #MusicAndDance #CampusVibes #CulturalNight',
             ]
         );
 
-        // 3. Ongoing Workshop (Approved, Ongoing)
-        $aiWorkshop = Event::updateOrCreate(
-            ['slug' => 'ai-ml-bootcamp-hands-on-deep-learning'],
+        // 3. RoboWars Combat Arena (Technical Fests)
+        $robowars = Event::updateOrCreate(
+            ['slug' => 'robowars-combat-arena'],
             [
-                'title' => 'Next-Gen AI & LLM Systems Workshop',
-                'description' => 'An intensive hands-on workshop covering Transformers, fine-tuning LLMs, retrieval-augmented generation (RAG), and deploying autonomous agent systems on edge infrastructure.',
-                'category_id' => $workshopCat->id,
-                'venue' => 'Advanced Computing Complex, Room 302',
-                'capacity' => 60,
+                'title' => 'RoboWars Combat Arena',
+                'description' => 'Fast-paced, high-octane robotics battle championship where student-built combat bots clash in an enclosed steel arena. Also includes autonomous obstacle navigation and line-follower sprint races.',
+                'category_id' => $techCat->id,
+                'venue' => 'Mechanical Engineering Arena, Hall 2',
+                'capacity' => 100,
+                'available_slots' => 75,
+                'start_date' => Carbon::now()->addDays(22)->setTime(10, 0),
+                'end_date' => Carbon::now()->addDays(23)->setTime(17, 0),
+                'registration_deadline' => Carbon::now()->addDays(19)->setTime(23, 59),
+                'organizer_id' => $organizer->id,
+                'organizing_department' => 'Robotics & Automation Club',
+                'status' => 'approved',
+                'banner_image' => 'images/events/robowars.jpg',
+                'hashtags' => '#RoboWars #BotArena #Engineering #Robotics',
+            ]
+        );
+
+        // 4. Champions Cup Football (Sports Meets)
+        $championsCup = Event::updateOrCreate(
+            ['slug' => 'champions-cup-football'],
+            [
+                'title' => 'Champions Cup Football',
+                'description' => 'The premier inter-department football tournament featuring 16 competing squads. Experience 4 days of thrilling knockout matches, penalty shootouts, and stadium action under the floodlights.',
+                'category_id' => $sportsCat->id,
+                'venue' => 'University Main Stadium Ground',
+                'capacity' => 200,
                 'available_slots' => 0,
-                'start_date' => Carbon::now()->subHours(2),
-                'end_date' => Carbon::now()->addHours(6),
-                'registration_deadline' => Carbon::now()->subDays(2),
+                'start_date' => Carbon::now()->subDays(10)->setTime(15, 0),
+                'end_date' => Carbon::now()->subDays(7)->setTime(20, 0),
+                'registration_deadline' => Carbon::now()->subDays(14)->setTime(23, 59),
+                'organizer_id' => $organizer->id,
+                'organizing_department' => 'Sports & Physical Education Dept',
+                'status' => 'approved',
+                'banner_image' => 'images/events/champions-cup.jpg',
+                'hashtags' => '#ChampionsCup #Football #CampusSports #Victory',
+            ]
+        );
+
+        // 5. AI & ML Bootcamp (Workshops & Seminars)
+        $aiBootcamp = Event::updateOrCreate(
+            ['slug' => 'ai-and-ml-bootcamp'],
+            [
+                'title' => 'AI & Machine Learning Bootcamp',
+                'description' => 'Comprehensive hands-on workshop on generative AI, deep learning models, prompt engineering, and building autonomous AI agents with Python and modern cloud frameworks.',
+                'category_id' => $workshopCat->id,
+                'venue' => 'Advanced Computing Complex, Lab 304',
+                'capacity' => 80,
+                'available_slots' => 12,
+                'start_date' => Carbon::now()->addDays(5)->setTime(10, 0),
+                'end_date' => Carbon::now()->addDays(6)->setTime(16, 0),
+                'registration_deadline' => Carbon::now()->addDays(3)->setTime(23, 59),
                 'organizer_id' => $organizer->id,
                 'organizing_department' => 'Artificial Intelligence & Data Science',
                 'status' => 'approved',
-                'hashtags' => '#AIWorkshop #LLMs #DeepLearning #CampusTech',
+                'banner_image' => 'images/events/ai-bootcamp.jpg',
+                'hashtags' => '#AIBootcamp #MachineLearning #GenAI #TechSkills',
             ]
         );
 
-        // 4. Past Sports Event (Approved, Completed with Feedback & Attendance)
-        $sportsMeet = Event::updateOrCreate(
-            ['slug' => 'titan-cup-2026-inter-department-football'],
+        // 6. Star Night Convocation Gala (Annual Day Functions)
+        $starGala = Event::updateOrCreate(
+            ['slug' => 'star-night-convocation-gala'],
             [
-                'title' => 'Titan Cup 2026: Inter-Department Football Championship',
-                'description' => 'The ultimate clash for glory! 16 department teams battled over 4 action-packed days in knockout fixtures leading to the grand stadium final under the floodlights.',
-                'category_id' => $sportsCat->id,
-                'venue' => 'University Stadium Field A',
-                'capacity' => 200,
-                'available_slots' => 0,
-                'start_date' => Carbon::now()->subDays(15)->setTime(14, 0),
-                'end_date' => Carbon::now()->subDays(12)->setTime(20, 0),
-                'registration_deadline' => Carbon::now()->subDays(18)->setTime(23, 59),
-                'organizer_id' => $organizer->id,
-                'organizing_department' => 'Physical Education & Athletics',
-                'status' => 'approved',
-                'hashtags' => '#TitanCup #FootballTournament #CampusSports #Champions',
-            ]
-        );
-
-        // 5. Pending Event (Waiting for Admin approval)
-        $pendingFest = Event::updateOrCreate(
-            ['slug' => 'robomania-2026-autonomous-bot-wars'],
-            [
-                'title' => 'RoboMania 2026: Autonomous Bot Arena Challenge',
-                'description' => 'High-voltage combat robotics and autonomous line-follower challenges. Teams design, fabricate, and pilot combat robots in a reinforced cage arena.',
-                'category_id' => $techCat->id,
-                'venue' => 'Mechanical Workshop Complex, Arena 1',
-                'capacity' => 80,
-                'available_slots' => 80,
-                'start_date' => Carbon::now()->addDays(25)->setTime(10, 0),
-                'end_date' => Carbon::now()->addDays(26)->setTime(17, 0),
-                'registration_deadline' => Carbon::now()->addDays(22)->setTime(23, 59),
-                'organizer_id' => $organizer->id,
-                'organizing_department' => 'Robotics & Automation Society',
-                'status' => 'pending',
-                'hashtags' => '#RoboMania #BotWars #Robotics #EngineeringChallenge',
-            ]
-        );
-
-        // 6. Annual Day Function (Upcoming, Approved)
-        $annualDay = Event::updateOrCreate(
-            ['slug' => 'annual-convocation-and-awards-gala-2026'],
-            [
-                'title' => '62nd Annual Convocation & Excellence Awards Gala',
-                'description' => 'Honoring academic achievers, university medalists, distinguished alumni, and outstanding sports champions with keynote addresses from eminent global leaders.',
+                'title' => 'Star Night Convocation Gala',
+                'description' => 'The prestigious annual convocation and student excellence award night. Featuring keynote speeches from industry leaders, award ceremonies for top rankers, and an evening celebrity musical performance.',
                 'category_id' => $annualCat->id,
-                'venue' => 'Grand Convention Hall',
+                'venue' => 'Grand Convention Auditorium',
                 'capacity' => 1000,
-                'available_slots' => 750,
-                'start_date' => Carbon::now()->addDays(35)->setTime(10, 0),
-                'end_date' => Carbon::now()->addDays(35)->setTime(18, 0),
-                'registration_deadline' => Carbon::now()->addDays(30)->setTime(23, 59),
+                'available_slots' => 650,
+                'start_date' => Carbon::now()->addDays(30)->setTime(17, 30),
+                'end_date' => Carbon::now()->addDays(30)->setTime(22, 0),
+                'registration_deadline' => Carbon::now()->addDays(25)->setTime(23, 59),
                 'organizer_id' => $organizer->id,
                 'organizing_department' => 'University Administration',
                 'status' => 'approved',
-                'hashtags' => '#AnnualGala #Convocation2026 #ExcellenceAwards',
+                'banner_image' => 'images/events/star-gala.jpg',
+                'hashtags' => '#StarNight #Convocation #AnnualGala #ExcellenceAwards',
+            ]
+        );
+
+        // 7. Apex Esports League (Intercollegiate Competitions)
+        $apexEsports = Event::updateOrCreate(
+            ['slug' => 'apex-campus-esports-league'],
+            [
+                'title' => 'Apex Campus Esports League',
+                'description' => 'The definitive gaming showdown! Compete in Valorant 5v5, EA Sports FC 24, and Rocket League. Big screen projections, live match casting, RGB gaming stations, and trophy pool.',
+                'category_id' => $interCat->id,
+                'venue' => 'Multimedia Auditorium & Gaming Lounge',
+                'capacity' => 120,
+                'available_slots' => 45,
+                'start_date' => Carbon::now()->addDays(15)->setTime(11, 0),
+                'end_date' => Carbon::now()->addDays(16)->setTime(19, 0),
+                'registration_deadline' => Carbon::now()->addDays(13)->setTime(23, 59),
+                'organizer_id' => $organizer->id,
+                'organizing_department' => 'Gaming & Esports Society',
+                'status' => 'approved',
+                'banner_image' => 'images/events/apex-esports.jpg',
+                'hashtags' => '#ApexEsports #GamingChampionship #Valorant #CampusGamers',
+            ]
+        );
+
+        // 8. LensCraft Photography Expo (Cultural Events)
+        $lenscraft = Event::updateOrCreate(
+            ['slug' => 'lenscraft-photo-and-art-expo'],
+            [
+                'title' => 'LensCraft Photography Expo',
+                'description' => 'Annual student photography and digital art exhibition showcasing breathtaking visual storytelling, landscape photography, portrait showcases, and short film screenings.',
+                'category_id' => $cultCat->id,
+                'venue' => 'Fine Arts Gallery & Exhibition Hall',
+                'capacity' => 150,
+                'available_slots' => 90,
+                'start_date' => Carbon::now()->addDays(8)->setTime(11, 0),
+                'end_date' => Carbon::now()->addDays(9)->setTime(18, 0),
+                'registration_deadline' => Carbon::now()->addDays(7)->setTime(23, 59),
+                'organizer_id' => $organizer->id,
+                'organizing_department' => 'Photography & Fine Arts Club',
+                'status' => 'approved',
+                'banner_image' => 'images/events/lenscraft.jpg',
+                'hashtags' => '#LensCraft #Photography #ArtGallery #VisualStorytelling',
             ]
         );
 
         // Sample Registrations for Student
-        $regHack = Registration::updateOrCreate(
-            ['event_id' => $hackathon->id, 'user_id' => $student->id],
+        Registration::updateOrCreate(
+            ['event_id' => $codecraft->id, 'user_id' => $student->id],
             [
                 'status' => 'registered',
-                'qr_code_token' => 'QR-HACK2026-' . strtoupper(Str::random(8)) . '-' . $student->id,
+                'qr_code_token' => 'QR-CODECRAFT-' . strtoupper(Str::random(8)) . '-' . $student->id,
                 'registered_at' => Carbon::now()->subDays(2),
             ]
         );
 
-        $regSports = Registration::updateOrCreate(
-            ['event_id' => $sportsMeet->id, 'user_id' => $student->id],
+        Registration::updateOrCreate(
+            ['event_id' => $championsCup->id, 'user_id' => $student->id],
             [
                 'status' => 'attended',
-                'qr_code_token' => 'QR-TITAN2026-' . strtoupper(Str::random(8)) . '-' . $student->id,
+                'qr_code_token' => 'QR-CHAMPIONS-' . strtoupper(Str::random(8)) . '-' . $student->id,
                 'certificate_fee_paid' => true,
                 'certificate_fee_txn' => 'TXN-SPORTS-' . strtoupper(Str::random(6)),
-                'registered_at' => Carbon::now()->subDays(20),
+                'registered_at' => Carbon::now()->subDays(15),
             ]
         );
 
         // Sample Attendance for Past Sports Event
         Attendance::updateOrCreate(
-            ['event_id' => $sportsMeet->id, 'user_id' => $student->id],
+            ['event_id' => $championsCup->id, 'user_id' => $student->id],
             [
                 'checked_in_by' => $organizer->id,
-                'checked_in_at' => Carbon::now()->subDays(15)->setTime(14, 15),
+                'checked_in_at' => Carbon::now()->subDays(10)->setTime(14, 45),
             ]
         );
 
         // Sample Certificate for Past Sports Event
         Certificate::updateOrCreate(
-            ['event_id' => $sportsMeet->id, 'user_id' => $student->id],
+            ['event_id' => $championsCup->id, 'user_id' => $student->id],
             [
-                'certificate_number' => 'CERT-TITAN-2026-' . $student->id,
-                'issued_at' => Carbon::now()->subDays(11),
+                'certificate_number' => 'CERT-CHAMPIONS-2026-' . $student->id,
+                'issued_at' => Carbon::now()->subDays(6),
             ]
         );
 
         // Sample Bookmark for Student
         Bookmark::updateOrCreate(
-            ['user_id' => $student->id, 'event_id' => $symphony->id]
+            ['user_id' => $student->id, 'event_id' => $pulseFest->id]
         );
 
         // Sample Feedback for Past Event
         Feedback::updateOrCreate(
-            ['event_id' => $sportsMeet->id, 'user_id' => $student->id],
+            ['event_id' => $championsCup->id, 'user_id' => $student->id],
             [
-                'user_role_title' => 'Participant & Department Forward',
+                'user_role_title' => 'Tournament Forward & Department Captain',
                 'overall_rating' => 5,
                 'venue_rating' => 5,
                 'coordination_rating' => 5,
@@ -220,11 +268,11 @@ class EventSeeder extends Seeder
 
         // Announcements
         Announcement::updateOrCreate(
-            ['title' => 'Registration Open for HackNova 2026!'],
+            ['title' => 'Registration Open for CodeCraft Hackathon!'],
             [
-                'message' => 'Early bird registrations for HackNova 2026 are now live. Reserve your slots and form teams before the deadline.',
+                'message' => 'Early bird registrations for CodeCraft Hackathon are now live. Reserve your slots and form teams before the deadline.',
                 'target_role' => 'all',
-                'event_id' => $hackathon->id,
+                'event_id' => $codecraft->id,
                 'created_by' => $admin ? $admin->id : $organizer->id,
             ]
         );
@@ -240,9 +288,9 @@ class EventSeeder extends Seeder
 
         // Notifications for Student
         Notification::updateOrCreate(
-            ['user_id' => $student->id, 'title' => 'Registration Confirmed: HackNova 2026'],
+            ['user_id' => $student->id, 'title' => 'Registration Confirmed: CodeCraft Hackathon'],
             [
-                'message' => 'Your pass for HackNova 2026 is confirmed. View your QR check-in token on your student dashboard.',
+                'message' => 'Your pass for CodeCraft Hackathon is confirmed. View your QR check-in token on your student dashboard.',
                 'type' => 'registration',
                 'is_read' => false,
             ]
@@ -251,7 +299,7 @@ class EventSeeder extends Seeder
         Notification::updateOrCreate(
             ['user_id' => $student->id, 'title' => 'Certificate Ready to Download'],
             [
-                'message' => 'Your participation certificate for Titan Cup 2026 is generated and ready to download.',
+                'message' => 'Your participation certificate for Champions Cup Football is generated and ready to download.',
                 'type' => 'certificate',
                 'is_read' => true,
             ]
@@ -259,39 +307,39 @@ class EventSeeder extends Seeder
 
         // Media Gallery Items
         MediaGallery::updateOrCreate(
-            ['title' => 'Grand Finale Trophy Celebration - Titan Cup 2026'],
+            ['title' => 'Grand Finale Trophy Celebration - Champions Cup'],
             [
-                'event_id' => $sportsMeet->id,
+                'event_id' => $championsCup->id,
                 'media_type' => 'image',
-                'file_path' => 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80',
+                'file_path' => 'images/events/champions-cup.jpg',
                 'category' => 'Sports Meets',
-                'department' => 'Physical Education & Athletics',
+                'department' => 'Sports & Physical Education Dept',
                 'year' => 2026,
                 'uploaded_by' => $organizer->id,
             ]
         );
 
         MediaGallery::updateOrCreate(
-            ['title' => 'Battle of the Bands - Live Stage Performance'],
+            ['title' => 'Battle of the Bands - Pulse Fest Stage'],
             [
-                'event_id' => $symphony->id,
+                'event_id' => $pulseFest->id,
                 'media_type' => 'image',
-                'file_path' => 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
+                'file_path' => 'images/events/pulse-fest.jpg',
                 'category' => 'Cultural Events',
-                'department' => 'Student Affairs & Cultural Council',
+                'department' => 'Cultural Affairs & Student Council',
                 'year' => 2026,
                 'uploaded_by' => $organizer->id,
             ]
         );
 
         MediaGallery::updateOrCreate(
-            ['title' => 'Robotics Arena Autonomous Bot Trials'],
+            ['title' => 'RoboWars Bot Arena Combat Trials'],
             [
-                'event_id' => null,
+                'event_id' => $robowars->id,
                 'media_type' => 'image',
-                'file_path' => 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80',
+                'file_path' => 'images/events/robowars.jpg',
                 'category' => 'Technical Fests',
-                'department' => 'Robotics & Automation Society',
+                'department' => 'Robotics & Automation Club',
                 'year' => 2026,
                 'uploaded_by' => $organizer->id,
             ]
