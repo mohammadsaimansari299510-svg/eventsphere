@@ -774,14 +774,15 @@ button {
    6. ANNOUNCEMENTS & METRICS CARDS
    ============================================================ */
 .announcements-banner {
-  margin: -1.5rem 2rem 2.5rem;
+  max-width: 1320px;
+  margin: -1.5rem auto 2.5rem;
   position: relative;
   z-index: 10;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-left: 4px solid var(--primary);
   border-radius: var(--radius-md);
-  padding: 1.1rem 1.6rem;
+  padding: 1.25rem 1.75rem;
   box-shadow: var(--shadow-lg);
 }
 
@@ -807,8 +808,9 @@ button {
 }
 
 .stats-section {
+  max-width: 1320px;
   margin: 3.5rem auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 .stats-grid {
@@ -2063,4 +2065,164 @@ button {
   .gallery-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ============================================================
+   PAGINATION STYLING (DARK THEME & SVG ARROW FIX)
+   ============================================================ */
+nav[role="navigation"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* Fix giant SVG arrows */
+nav[role="navigation"] svg,
+.pagination svg,
+.page-link svg {
+  width: 1.15rem !important;
+  height: 1.15rem !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  fill: currentColor;
+}
+
+nav[role="navigation"] .hidden {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  nav[role="navigation"] .hidden {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+}
+
+nav[role="navigation"] .sm\:hidden {
+  display: none !important;
+}
+
+nav[role="navigation"] p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+nav[role="navigation"] p span {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+nav[role="navigation"] span.relative,
+nav[role="navigation"] div > span.relative {
+  display: inline-flex;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+nav[role="navigation"] span.relative a,
+nav[role="navigation"] span.relative span[aria-disabled="true"],
+nav[role="navigation"] span.relative span[aria-current="page"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: var(--bg-card);
+  border-right: 1px solid var(--border-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+nav[role="navigation"] span.relative a:last-child,
+nav[role="navigation"] span.relative span:last-child {
+  border-right: none;
+}
+
+nav[role="navigation"] span.relative a:hover {
+  background: var(--primary-subtle);
+  color: var(--primary-light);
+}
+
+nav[role="navigation"] span.relative span[aria-current="page"] span {
+  background: var(--gradient-primary);
+  color: #FFFFFF !important;
+  font-weight: 800;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav[role="navigation"] span.relative span[aria-disabled="true"] {
+  color: var(--text-subtle);
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Bootstrap style .pagination support */
+.pagination {
+  display: flex;
+  list-style: none;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  padding: 0;
+  margin: 0;
+}
+
+.pagination .page-item .page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: var(--bg-card);
+  border: none;
+  border-right: 1px solid var(--border-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.pagination .page-item:last-child .page-link {
+  border-right: none;
+}
+
+.pagination .page-item.active .page-link {
+  background: var(--gradient-primary);
+  color: #FFFFFF !important;
+  font-weight: 800;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: var(--text-subtle);
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pagination .page-item .page-link:hover:not(.active):not(.disabled) {
+  background: var(--primary-subtle);
+  color: var(--primary-light);
 }

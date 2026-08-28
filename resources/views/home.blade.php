@@ -53,25 +53,27 @@
      CAMPUS ANNOUNCEMENTS
      ================================================ --}}
 @if(isset($announcements) && $announcements->count() > 0)
-<div class="announcements-banner reveal">
-    <div class="announcements-title">
-        <i class="fa-solid fa-bullhorn" style="color:var(--primary-light);"></i>
-        Campus Bulletins & Critical Alerts
-    </div>
-    <div>
-        @foreach($announcements as $announcement)
-        <div class="announcement-item">
-            <div>
-                <strong style="font-size:0.92rem; color:#FFFFFF;">{{ $announcement->title }}</strong>
-                @if($announcement->message)
-                    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">{{ Str::limit($announcement->message, 100) }}</p>
-                @endif
-            </div>
-            <span style="font-size:0.78rem; color:var(--text-dim); white-space:nowrap; flex-shrink:0;">
-                <i class="fa-regular fa-clock" style="margin-right:0.2rem;"></i> {{ $announcement->created_at->diffForHumans() }}
-            </span>
+<div style="max-width:1320px; margin:-1.5rem auto 2.5rem; padding:0 clamp(1.25rem, 3vw, 2.5rem);">
+    <div class="announcements-banner reveal" style="margin:0;">
+        <div class="announcements-title">
+            <i class="fa-solid fa-bullhorn" style="color:var(--primary-light);"></i>
+            Campus Bulletins & Critical Alerts
         </div>
-        @endforeach
+        <div>
+            @foreach($announcements as $announcement)
+            <div class="announcement-item">
+                <div>
+                    <strong style="font-size:0.92rem; color:#FFFFFF;">{{ $announcement->title }}</strong>
+                    @if($announcement->message)
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">{{ Str::limit($announcement->message, 100) }}</p>
+                    @endif
+                </div>
+                <span style="font-size:0.78rem; color:var(--text-dim); white-space:nowrap; flex-shrink:0;">
+                    <i class="fa-regular fa-clock" style="margin-right:0.2rem;"></i> {{ $announcement->created_at->diffForHumans() }}
+                </span>
+            </div>
+            @endforeach
+        </div>
     </div>
 </div>
 @endif
@@ -79,7 +81,7 @@
 {{-- ================================================
      KEY METRICS & STATISTICS SECTION
      ================================================ --}}
-<div class="stats-section reveal">
+<div class="stats-section reveal" style="max-width:1320px; margin:3.5rem auto; padding:0 clamp(1.25rem, 3vw, 2.5rem);">
     <div class="stats-grid">
         <div class="stat-card">
             <div class="stat-icon">
@@ -123,7 +125,7 @@
 {{-- ================================================
      UPCOMING FEATURED EVENTS
      ================================================ --}}
-<section style="max-width:1320px; margin:4.5rem auto 3rem; padding:0 1.5rem;" class="reveal">
+<section style="max-width:1320px; margin:4.5rem auto 3rem; padding:0 clamp(1.25rem, 3vw, 2.5rem);" class="reveal">
     <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem;">
         <div>
             <span class="section-eyebrow">Discover What's Happening</span>
@@ -185,7 +187,7 @@
 {{-- ================================================
      ORGANIZER PROMOTIONAL CALLOUT
      ================================================ --}}
-<section style="max-width:1320px; margin:4.5rem auto; padding:0 1.5rem;" class="reveal">
+<section style="max-width:1320px; margin:4.5rem auto; padding:0 clamp(1.25rem, 3vw, 2.5rem);" class="reveal">
     <div style="background: linear-gradient(135deg, #121826 0%, #172033 100%); border:1px solid rgba(59,130,246,0.3); border-radius:var(--radius-xl); padding:3.5rem; position:relative; overflow:hidden; box-shadow:var(--shadow-xl);">
         <div style="position:absolute; right:-50px; top:-50px; width:280px; height:280px; background:radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%); border-radius:50%; pointer-events:none;"></div>
         
@@ -214,7 +216,7 @@
 {{-- ================================================
      CATEGORIES SECTION
      ================================================ --}}
-<section style="max-width:1320px; margin:4.5rem auto 5rem; padding:0 1.5rem;" class="reveal">
+<section style="max-width:1320px; margin:4.5rem auto 5rem; padding:0 clamp(1.25rem, 3vw, 2.5rem);" class="reveal">
     <div style="text-align:center; margin-bottom:3rem;">
         <span class="section-eyebrow">Browse by Track</span>
         <h2 class="section-title">Explore Event Categories</h2>
